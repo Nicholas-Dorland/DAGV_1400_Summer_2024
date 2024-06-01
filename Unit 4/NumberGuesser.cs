@@ -30,6 +30,11 @@ public class Program
             {
                 Console.WriteLine("Too low! Try again.");
             }
+            // Nicholas Dorland - Checks to see if the guess is above 10.
+            else if (userGuess > 10)
+            {
+                Console.WriteLine("Out of bounds! Try again.");
+            }
             else
             {
                 Console.WriteLine("Too high! Try again.");

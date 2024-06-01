@@ -18,7 +18,15 @@ public class Program
         Console.WriteLine("\nHere are your favorite foods:");
         foreach (string food in favoriteFoods)
         {
-            Console.WriteLine($"I love {food}!");
+            //Nicholas Dorland - Checks if the food ends with a plural.
+            if (food.EndsWith("s"))
+            {
+                Console.WriteLine($"{food} are so good!");
+            }
+            else
+            {
+                Console.WriteLine($"I love {food}!");
+            }
         }
     }
 }
