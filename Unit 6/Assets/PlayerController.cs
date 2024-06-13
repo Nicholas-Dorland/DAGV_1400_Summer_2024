@@ -18,21 +18,24 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         Debug.Log("Test test!");
+        isJumping = true;
     }
 
     void Update()
     {
         float horiz = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
-        var xPos = horiz * moveSpeed;
-        var vPos = vert * moveSpeed;
+        //var xPos = horiz * moveSpeed;
+        //var zPos = vert * moveSpeed;
 
-        var moveDirection = new Vector3(xPos, 0, vPos);
+        var velocity = new Vector3(horiz, 0, vert) * moveSpeed;
+        Debug.Log("Start: " + moveDirection.y);
+
 
         if (!controller.isGrounded)
         {
-            moveDirection.y -= gravity;// * Time.deltaTime;
-            Debug.Log("Fall");
+            moveDirection.y -= gravity * Time.deltaTime;
+            Debug.Log("Fall :" + moveDirection.y);
         }
         else
         {
@@ -45,7 +48,7 @@ public class PlayerController : MonoBehaviour
         {
             if (controller.isGrounded || !isJumping)
             {
-                moveDirection.y = jumpForce;// * -2 * gravity;
+                moveDirection.y = jumpForce;
                 isJumping = true;
             }
         }
@@ -65,6 +68,9 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Boing");
         }*/
 
-        controller.Move(moveDirection * Time.deltaTime);
+        Debug.Log("End :" + moveDirection.y);
+
+        var move = moveDirection + velocity;
+        controller.Move(move * Time.deltaTime);
     }
 }
