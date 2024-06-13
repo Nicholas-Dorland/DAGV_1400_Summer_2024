@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float turnSpeed = 5f;
+    //[SerializeField] private float turnSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float gravity = 9.81f;
 
@@ -23,56 +24,47 @@ public class PlayerController : MonoBehaviour
     {
         float horiz = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
-        float xPos = horiz * moveSpeed;
-        float vPos = vert * moveSpeed;
+        var xPos = horiz * moveSpeed;
+        var vPos = vert * moveSpeed;
 
-        transform.position = new Vector3(xPos, 0, vPos);
+        var moveDirection = new Vector3(xPos, 0, vPos);
 
-        if (Input.GetButtonDown("Jump") /*&& controller.isGrounded*/)
+        if (!controller.isGrounded)
+        {
+            moveDirection.y -= gravity;// * Time.deltaTime;
+            Debug.Log("Fall");
+        }
+        else
+        {
+            moveDirection.y = 0;
+            isJumping = false;
+            Debug.Log("Stop");
+        }
+
+        if (Input.GetButton("Jump"))
+        {
+            if (controller.isGrounded || !isJumping)
+            {
+                moveDirection.y = jumpForce;// * -2 * gravity;
+                isJumping = true;
+            }
+        }
+
+        /*if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             isJumping = true;
             Debug.Log("Whee");
+            moveDirection.y -= gravity * Time.deltaTime;
         }
-
-        moveDirection.y -= gravity * Time.deltaTime;
-
-        /*if (Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
-        }*/
-
-        //if (Input.GetKey(KeyCode.Space) /*&& controller.isGrounded*/)
-        /*{
-            isJumping = true;
-        }*/
-
-        /*if (!controller.isGrounded)
-        {
-            transform.Translate(-Vector3.up * gravity * Time.deltaTime);
-            Debug.Log("Touchdown");
-        }*/
 
         if (isJumping)
         {
-            transform.Translate(Vector3.up * jumpForce * Time.deltaTime);
-            //moveDirection.y = jumpForce;
+            //transform.Translate(Vector3.up * jumpForce * Time.deltaTime);
+            moveDirection.y = jumpForce * 2 * gravity;
             isJumping = false;
             Debug.Log("Boing");
-        }
+        }*/
+
+        controller.Move(moveDirection * Time.deltaTime);
     }
 }
