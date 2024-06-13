@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Axis : MonoBehaviour
 {
+    /*Going to comment this out as I cannot test with the errors this brings.
     public float range;
     public Text textOutput;
 
@@ -14,5 +15,5 @@ public class Axis : MonoBehaviour
 
         transform.position = new Vector3(xPos, 2f, 0);
         textOutput.text = "Value Returned: " + h.ToString("F2");
-    }
+    }*/
 }

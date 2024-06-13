@@ -20,7 +20,7 @@ public class IfStatements : MonoBehaviour
 
     void TemperatureTest()
     {
-        if (coffeeTemperature.Temperature > hotLimitTemperature)
+        if (coffeeTemperature > hotLimitTemperature)
         {
             print("Coffee is too hot.");
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KeyInput : MonoBehaviour
 {
+    /*Going to comment all of this out as it does not allow me to test with the errors this brings.
     public Image graphic;
     public Sprite standard;
     public Sprite downgfx;
@@ -47,5 +48,5 @@ public class KeyInput : MonoBehaviour
         boolDisplay1.text = " " + down;
         boolDisplay2.text = " " + held;
         boolDisplay3.text = " " + held;
-    }
+    }*/
 }

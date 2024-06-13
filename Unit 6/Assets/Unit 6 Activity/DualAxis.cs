@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DualAxis : MonoBehaviour
 {
+    /*Going to comment this out as it does not allow me to text with the errors this brings.
     public Text horizontalValueDisplayText;
     public Text verticalValueDisplayText;
     public float hRange;
@@ -19,5 +20,5 @@ public class DualAxis : MonoBehaviour
         transform.position = new Vector3(xPos, 0, vPos);
         horizontalValueDisplayText.text = h.ToString("F2");
         verticalValueDisplayText.text = v.ToString("F2");
-    }
+    }*/
 }
