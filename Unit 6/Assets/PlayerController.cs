@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private float turnSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float gravity = 9.81f;
+    [SerializeField] private float height = 2;
+    [SerializeField] private float crouchHeight = 1;
 
     private CharacterController controller;
     private Vector3 moveDirection;
@@ -19,17 +21,37 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         Debug.Log("Test test!");
         isJumping = true;
+        controller.height = height;
     }
 
     void Update()
     {
-        float horiz = Input.GetAxis("Horizontal");
-        float vert = Input.GetAxis("Vertical");
-        //var xPos = horiz * moveSpeed;
-        //var zPos = vert * moveSpeed;
+        var velocity = new Vector3(0, 0, 0);
+        if (Input.GetButton("Crouch"))
+        {
+            float horiz = Input.GetAxis("Horizontal");
+            float vert = Input.GetAxis("Vertical");
 
-        var velocity = new Vector3(horiz, 0, vert) * moveSpeed;
-        Debug.Log("Start: " + moveDirection.y);
+            velocity.x = horiz * (moveSpeed - 2);
+            velocity.z = vert * (moveSpeed - 2);
+
+            controller.height = crouchHeight;
+        }
+        else if (Input.GetButton("Sprint"))
+        {
+            float horiz = Input.GetAxis("Horizontal");
+            float vert = Input.GetAxis("Vertical");
+
+            velocity.x = horiz * (moveSpeed + 3);
+            velocity.z = vert * (moveSpeed + 3);
+        }
+        else
+        {
+            float horiz = Input.GetAxis("Horizontal");
+            float vert = Input.GetAxis("Vertical");
+
+            velocity = new Vector3(horiz, 0, vert) * moveSpeed;
+        }
 
 
         if (!controller.isGrounded)
@@ -53,22 +75,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        /*if (Input.GetButtonDown("Jump") && controller.isGrounded)
+        if (!Input.GetButton("Crouch"))
         {
-            isJumping = true;
-            Debug.Log("Whee");
-            moveDirection.y -= gravity * Time.deltaTime;
+            if (controller.height < height)
+            {
+                controller.height += height * Time.deltaTime;
+                if (controller.height > height)
+                {
+                    controller.height = height;
+                }
+            }
         }
-
-        if (isJumping)
-        {
-            //transform.Translate(Vector3.up * jumpForce * Time.deltaTime);
-            moveDirection.y = jumpForce * 2 * gravity;
-            isJumping = false;
-            Debug.Log("Boing");
-        }*/
-
-        Debug.Log("End :" + moveDirection.y);
 
         var move = moveDirection + velocity;
         controller.Move(move * Time.deltaTime);
