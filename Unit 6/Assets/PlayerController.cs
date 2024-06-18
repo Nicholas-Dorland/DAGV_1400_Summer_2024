@@ -73,23 +73,25 @@ public class PlayerController : MonoBehaviour
         if (!controller.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
-            Debug.Log("Fall :" + moveDirection.y);
+            isJumping = true;
         }
         //Gravity on the ground.
         else
         {
             moveDirection.y = 0;
             isJumping = false;
-            Debug.Log("Stop");
         }
 
         //Jumping mechanics. Let's-a-go!
         if (Input.GetButton("Jump"))
         {
-            if (controller.isGrounded || !isJumping)
+            if (!Input.GetButton("Crouch"))
             {
-                moveDirection.y = jumpForce;
-                isJumping = true;
+                if (controller.isGrounded || !isJumping)
+                {
+                    moveDirection.y = jumpForce;
+                    isJumping = true;
+                }
             }
         }
 
