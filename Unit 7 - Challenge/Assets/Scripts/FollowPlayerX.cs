@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FollowPlayerX : MonoBehaviour
 {
-    public GameObject plane;
-    private Vector3 offset;
+    public GameObject plane;        /*Assigned the FollowPlayerX Script to the camera. Challenge 5.*/
+    private Vector3 offset = new Vector3(25f, 0f, 5f);  /*Defined the vector for the offset. Challenge 4.*/
 
     // Start is called before the first frame update
     void Start()
