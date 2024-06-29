@@ -5,14 +5,31 @@ using UnityEngine;
 public class PlayerControllerX : MonoBehaviour
 {
     public GameObject dogPrefab;
+    private float spaceDelay = 2.0f;
+    private bool canSpace = true;
+    private float timeSinceSpace = 0.0f;
 
     // Update is called once per frame
     void Update()
     {
-        // On spacebar press, send dog
-        if (Input.GetKeyDown(KeyCode.Space))
+        // Set a delay on pressing space
+        if (canSpace == false)
         {
-            Instantiate(dogPrefab, transform.position, dogPrefab.transform.rotation);
+            timeSinceSpace += Time.deltaTime;
+            if (timeSinceSpace > spaceDelay)
+            {
+                canSpace = true;
+            }
+        }
+        // On spacebar press, send dog
+        if (canSpace == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Instantiate(dogPrefab, transform.position, dogPrefab.transform.rotation);
+                canSpace = false;
+                timeSinceSpace = 0.0f;
+            }
         }
     }
 }
