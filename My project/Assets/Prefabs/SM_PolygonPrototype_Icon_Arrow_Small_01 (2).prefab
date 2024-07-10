@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 267604795366376820}
   - component: {fileID: 8248957762944639922}
   - component: {fileID: 6723250266884234247}
+  - component: {fileID: 1679445204587123372}
   m_Layer: 0
   m_Name: SM_PolygonPrototype_Icon_Arrow_Small_01 (2)
   m_TagString: Orange
@@ -27,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5770635691611633902}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -4.3766975, y: 1.5986073, z: 0.3431957}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &267604795366376820
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -106,3 +107,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: b9979013b18adc147ac208c3520b982e, type: 3}
+--- !u!114 &1679445204587123372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5770635691611633902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4af9d00351d4f4fb31c8c6437f58a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
