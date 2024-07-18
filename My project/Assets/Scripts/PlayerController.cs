@@ -31,11 +31,11 @@ public class PlayerController : MonoBehaviour
         //Test to distinguish the color the swords should be.
         if (Input.GetAxis("Mouse X") > 0)
         {
-            Debug.Log("Purple!");
+            //Debug.Log("Purple!");
         }
         else if (Input.GetAxis("Mouse X") < 0)
         {
-            Debug.Log("Orange!");
+            //Debug.Log("Orange!");
         }
     }
 }
