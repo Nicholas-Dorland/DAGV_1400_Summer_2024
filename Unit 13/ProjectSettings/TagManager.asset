@@ -7,6 +7,9 @@ TagManager:
   - Bullet
   - Enemy
   - Shield
+  - Mothership
+  - Scout
+  - UFO
   layers:
   - Default
   - TransparentFX
