@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8648909811173781415}
   - component: {fileID: 6792228295889215735}
+  - component: {fileID: -7982478061944612415}
   m_Layer: 0
   m_Name: Powerup_Shell
   m_TagString: Untagged
@@ -46,6 +47,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
+--- !u!114 &-7982478061944612415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93521534837079062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f62ac48c9bb61469d233e6835ee56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topBound: 30
+  bottomBound: -25
 --- !u!1 &4134194793440069273
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,6 +74,7 @@ GameObject:
   - component: {fileID: 1186269233037587828}
   - component: {fileID: 1450598588341455430}
   - component: {fileID: 2512974759545333120}
+  - component: {fileID: 846033997244938595}
   m_Layer: 0
   m_Name: Powerup
   m_TagString: Shield
@@ -179,3 +195,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &846033997244938595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4134194793440069273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0627ebe32c6cb734a9c15921fc13db63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color1: {fileID: 2100000, guid: cb386ee1f3a45f949bcc1097ab935e7a, type: 2}
+  color2: {fileID: 2100000, guid: c0d8d1fe4cc327d4181be3e0309a4c88, type: 2}
+  hasSwapped: 0
