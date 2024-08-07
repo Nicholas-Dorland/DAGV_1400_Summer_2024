@@ -5,9 +5,13 @@ using UnityEngine;
 public class MoveForward : MonoBehaviour
 {
     public float speed = 40.0f;
+    public ScoreManager scoreManager;
+
 
     void Start()
     {
+        scoreManager = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
+
         string name = this.gameObject.name;
         switch (name)
         {
@@ -36,6 +40,7 @@ public class MoveForward : MonoBehaviour
     {
         if (this.gameObject.CompareTag("Bullet") && other.gameObject.CompareTag("Enemy"))
         {
+            scoreManager.GetPoints(other.gameObject.name);
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
