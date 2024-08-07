@@ -5,7 +5,8 @@ using UnityEngine;
 public class MoveForward : MonoBehaviour
 {
     public float speed = 40.0f;
-    public ScoreManager scoreManager;
+
+    private ScoreManager scoreManager;
 
 
     void Start()

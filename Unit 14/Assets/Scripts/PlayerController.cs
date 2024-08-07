@@ -8,15 +8,18 @@ public class PlayerController : MonoBehaviour
     public GameObject lazerBolt;
     public GameObject powerupIndicator;
     public float horizontalInput;
-    public float speed = 25;
-    public float xRange = 30;
-    public bool hasPowerup;
+
+    private float speed = 25;
+    private float xRange = 30;
+    private bool hasPowerup;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         hasPowerup = false;
         powerupIndicator.SetActive(false);
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -37,7 +40,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !gameManager.isGameOver)
         {
             Instantiate(lazerBolt, blaster.transform.position, lazerBolt.transform.rotation);
         }

@@ -6,13 +6,16 @@ public class DestroyObject : MonoBehaviour
 {
     public float topBound = 30.0f;
     public float bottomBound = -25.0f;
-    public ScoreManager scoreManager;
+
+    private ScoreManager scoreManager;
+    private GameManager gameManager;
 
 
     // Start is called before the first frame update
     void Awake()
     {
         scoreManager = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -24,6 +27,7 @@ public class DestroyObject : MonoBehaviour
         }
         else if (transform.position.z < bottomBound)
         {
+            gameManager.isGameOver = true;
             scoreManager.LosePoints(this.gameObject.name);
             Debug.Log("Game Over!");
             Destroy(gameObject);
