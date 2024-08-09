@@ -11,9 +11,11 @@ public class PowerupSpawnManaager : MonoBehaviour
 
     private void Start()
     {
+        // Spawn powerups.
         InvokeRepeating("RandomSpawner", 3.0f, 2.0f);
     }
 
+    // Spawn powerups at random positions.
     void RandomSpawner()
     {
         Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 2, spawnPosZ);

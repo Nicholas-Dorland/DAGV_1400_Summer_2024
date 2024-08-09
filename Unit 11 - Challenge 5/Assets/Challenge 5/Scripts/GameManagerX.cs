@@ -6,27 +6,21 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManagerX : MonoBehaviour
-{
+{    
+    public bool isGameActive;
     public CountdownTimerX countdownTimerX;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public GameObject titleScreen;
     public Button restartButton; 
-
     public List<GameObject> targetPrefabs;
 
     private int score;
     private float spawnRate = 1.5f;
-    public bool isGameActive;
-
     private float spaceBetweenSquares = 2.5f; 
     private float minValueX = -3.75f; //  x value of the center of the left-most square
     private float minValueY = -3.75f; //  y value of the center of the bottom-most square
 
-    /*private void Start()
-    {
-        countdownTimerX = GameObject.Find("Timer").GetComponent<CountdownTimerX>();
-    }*/
     // Start the game, remove title screen, reset score, and adjust spawnRate based on difficulty button clicked
     public void StartGame(int difficulty)
     {

@@ -8,6 +8,7 @@ public class MoveForward : MonoBehaviour
 
     void Start()
     {
+        // Set speed based on object.
         string name = this.gameObject.name;
         switch (name)
         {
@@ -29,9 +30,11 @@ public class MoveForward : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Move forward based on speed.
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
+    // Destroy ships when hit with bullets.
     private void OnTriggerEnter(Collider other)
     {
         if (this.gameObject.CompareTag("Bullet") && other.gameObject.CompareTag("Enemy"))

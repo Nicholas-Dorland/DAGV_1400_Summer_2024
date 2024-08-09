@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if it is Game Over.
         if (isGameOver)
         {
             EndGame();
@@ -38,22 +39,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // End the game.
     void EndGame()
     {
         gameOverText.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
 
+    // Play an explosion sound.
     public void PlayExplode()
     {
         gameAudio.PlayOneShot(playerExplode, 1.0f);
     }
 
+    // Play a destroyed sound.
     public void PlayDestroy()
     {
         gameAudio.PlayOneShot(enemyExplode, 1.0f);
     }
 
+    // Play an ending sound.
     public void PlayEnd()
     {
         gameAudio.PlayOneShot(gameOver, 1.0f);

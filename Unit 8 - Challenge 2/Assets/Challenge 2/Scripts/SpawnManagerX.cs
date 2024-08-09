@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SpawnManagerX : MonoBehaviour
 {
-    public GameObject[] ballPrefabs;
+    // Important Variables.
+    public GameObject[] ballPrefabs;        // An array of objects, in this case balls.
 
     private float spawnLimitXLeft = -22;
     private float spawnLimitXRight = 7;
@@ -16,6 +17,7 @@ public class SpawnManagerX : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Set the rest of the code into motion.
         Invoke("SpawnRandomBall", startDelay);
     }
 

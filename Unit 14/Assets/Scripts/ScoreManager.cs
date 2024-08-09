@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
     public int score;
     public TextMeshProUGUI scoreText;
 
+    // Get point values based on object.
     public void GetPoints(string name)
     {
         int points = 0;
@@ -27,6 +28,7 @@ public class ScoreManager : MonoBehaviour
         IncreaseScore(points);
     }
 
+    // Get negative point values based on object.
     public void LosePoints(string name)
     {
         int points = 0;
@@ -46,18 +48,21 @@ public class ScoreManager : MonoBehaviour
         DecreaseScore(points);
     }
 
+    // Get points.
     public void IncreaseScore(int amount)
     {
         score += amount;
         UpdateScoreText();
     }
 
+    // Lose points.
     public void DecreaseScore(int amount)
     {
         score -= amount;
         UpdateScoreText();
     }
 
+    // Show new score total.
     public void UpdateScoreText()
     {
         scoreText.text = "Score: " + score;

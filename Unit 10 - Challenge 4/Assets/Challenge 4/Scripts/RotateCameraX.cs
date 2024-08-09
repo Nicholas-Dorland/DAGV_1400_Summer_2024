@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class RotateCameraX : MonoBehaviour
 {
-    private float speed = 200;
     public GameObject player;
+
+    private float speed = 200;
 
     // Update is called once per frame
     void Update()
     {
+        // When input is given, rotate the camera.
         float horizontalInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.up, horizontalInput * speed * Time.deltaTime);
 

@@ -15,6 +15,7 @@ public class MoveForward : MonoBehaviour
         scoreManager = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
+        // Set speed based on game object.
         string name = this.gameObject.name;
         switch (name)
         {
@@ -36,9 +37,11 @@ public class MoveForward : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Move forward at a set speed.
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
+    // Destroy enemy when hit with a bullet.
     private void OnTriggerEnter(Collider other)
     {
         if (this.gameObject.CompareTag("Bullet") && other.gameObject.CompareTag("Enemy"))

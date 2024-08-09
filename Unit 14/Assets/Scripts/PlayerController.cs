@@ -28,21 +28,25 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Move the player based on input.
         horizontalInput = Input.GetAxis("Horizontal");
 
         transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
 
-        powerupIndicator.transform.position = transform.position;
+        powerupIndicator.transform.position = transform.position;       // Move the powerup with the player.
 
+        // Stop the player if they move too far left...
         if (transform.position.x < -xRange)
         {
             transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
         }
+        // ...or right.
         if (transform.position.x > xRange)
         {
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
 
+        // Shoot when space is pressed.
         if (Input.GetKeyDown(KeyCode.Space) && !gameManager.isGameOver)
         {
             playerAudio.PlayOneShot(shootSound, 1.0f);
@@ -50,16 +54,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // When colliding with objects...
     private void OnTriggerEnter(Collider other)
     {
+        // ...give a shield.
         if (other.gameObject.CompareTag("Shield"))
         {
             Destroy(other.gameObject);
             hasPowerup = true;
             powerupIndicator.SetActive(true);
         }
+        // ...if it's an enemy...
         else if (other.gameObject.CompareTag("Enemy"))
         {
+            // ...destroy enemy (with shield).
             if (hasPowerup)
             {
                 gameManager.PlayDestroy();
@@ -67,6 +75,7 @@ public class PlayerController : MonoBehaviour
                 powerupIndicator.SetActive(false);
                 Destroy(other.gameObject);
             }
+            // ...destroy player.
             else
             {
                 gameManager.PlayExplode();

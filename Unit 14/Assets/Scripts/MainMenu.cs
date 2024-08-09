@@ -17,12 +17,14 @@ public class MainMenu : MonoBehaviour
         buttonPress = GetComponent<AudioSource>();
     }
 
+    // Start game when Start is pressed.
     public void StartGame()
     {
         buttonPress.PlayOneShot(pressStart, 1.0f);
         Invoke("ChangeScene", 0.5f);
     }
 
+    // Go to the game screen.
     private void ChangeScene()
     {
         SceneManager.LoadScene(sceneToLoad);
@@ -32,6 +34,7 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     public void QuitGame()
     {
+        // Play a noise when Quit is pressed.
         buttonPress.PlayOneShot(pressQuit, 1.0f);
         Application.Quit();
         Debug.Log("Quit Game!");

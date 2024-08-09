@@ -11,9 +11,11 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Start()
     {
+        // Repeatedly spawn enemies.
         InvokeRepeating("RandomSpawner", 2.0f, 0.5f);
     }
 
+    // Spawn random enemies at random positions.
     void RandomSpawner()
     {
         Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 2, spawnPosZ);

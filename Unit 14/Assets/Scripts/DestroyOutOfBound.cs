@@ -14,6 +14,7 @@ public class DestroyObject : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        // Establish the score text objects.
         scoreManager = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
@@ -21,12 +22,15 @@ public class DestroyObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Destroy objects when they moves too high.
         if (transform.position.z > topBound)
         {
             Destroy(gameObject);
         }
+        // When an object moves too low...
         else if (transform.position.z < bottomBound)
         {
+            // ...if it's an enemy, Game Over.
             if (this.gameObject.CompareTag("Enemy"))
             {
                 gameManager.PlayEnd();
@@ -34,6 +38,7 @@ public class DestroyObject : MonoBehaviour
                 scoreManager.LosePoints(this.gameObject.name);
                 Debug.Log("Game Over!");
             }
+            // ...destroy it.
             Destroy(gameObject);
         }
     }

@@ -7,10 +7,11 @@ using UnityEngine.UI;
 
 public class CountdownTimerX : MonoBehaviour
 {
-    public TextMeshProUGUI timerText;
-    private GameManagerX gameManagerX;
-    public GameObject timer;
     public float totalTime = 60;
+    public TextMeshProUGUI timerText;
+    public GameObject timer;
+
+    private GameManagerX gameManagerX;
 
     // Start is called before the first frame update
     void Start()
@@ -21,13 +22,16 @@ public class CountdownTimerX : MonoBehaviour
 
     void Update()
     {
+        // Update the timer based on time left.
         totalTime -= Time.deltaTime;
 
+        // Show, in whole numbers, the time left...
         if (totalTime > 0)
         {
             Debug.Log(totalTime);
             timerText.text = "Time: " + Mathf.Round(totalTime);
         }
+        // ...until there is no more time.
         else
         {
             totalTime = 0;
@@ -36,11 +40,13 @@ public class CountdownTimerX : MonoBehaviour
         }
     }
 
+    // Start the timer.
     public void StartTimer()
     {
         timer.SetActive(true);
     }
 
+    // Stop the timer.
     public void StopTimer()
     {
         timer.SetActive(false);

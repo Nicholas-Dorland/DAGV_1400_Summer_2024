@@ -23,11 +23,13 @@ public class PowerupFlash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Change color based on position.
         var position = gameObject.transform.position;
         posZ = Mathf.Round(position.z);
         float timing = posZ % swapPoint;
 
-        if (/*timing == 0 &&*/ !hasSwapped)
+        // Deternine what color to switch to.
+        if (!hasSwapped)
         {           
             hasSwapped = true;
             SwitchColor();
@@ -38,6 +40,7 @@ public class PowerupFlash : MonoBehaviour
         }
     }
 
+    // Switch between two colors.
     void SwitchColor()
     {
         if (isStartColor)

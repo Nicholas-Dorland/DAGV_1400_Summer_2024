@@ -27,7 +27,7 @@ public class PlayerControllerX : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Instantiate(dogPrefab, transform.position, dogPrefab.transform.rotation);
-                canSpace = false;
+                canSpace = false;       // Sets a delay on the time between Spacebar presses.
                 timeSinceSpace = 0.0f;
             }
         }

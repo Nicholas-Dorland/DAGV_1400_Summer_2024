@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class PlayerControllerX : MonoBehaviour
 {
-    private Rigidbody playerRb;
-    private float speed = 500;
-    private float impulse = 500;
-    private GameObject focalPoint;
-    public GameObject trail;
 
     public bool hasPowerup;
-    public GameObject powerupIndicator;
     public int powerUpDuration = 5;
+    public GameObject trail;
+    public GameObject powerupIndicator;
 
     private float normalStrength = 10; // how hard to hit enemy without powerup
     private float powerupStrength = 25; // how hard to hit enemy with powerup
-    
+    private float speed = 500;
+    private float impulse = 500;
+    private GameObject focalPoint;
+    private Rigidbody playerRb;
+
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();

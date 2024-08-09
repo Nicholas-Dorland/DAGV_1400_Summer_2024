@@ -5,23 +5,21 @@ using UnityEngine;
 public class PlayerControllerX : MonoBehaviour
 {
     public bool gameOver;
-
     public float floatForce;
-    private float gravityModifier = 1.5f;
-    private Rigidbody playerRb;
-
     public ParticleSystem explosionParticle;
     public ParticleSystem fireworksParticle;
-
-    private AudioSource playerAudio;
     public AudioClip moneySound;
     public AudioClip explodeSound;
     public AudioClip bounceSound;
 
+    private float gravityModifier = 1.5f;
+    private Rigidbody playerRb;
+    private AudioSource playerAudio;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Apply gravity to the Player.
         Physics.gravity *= gravityModifier;
         playerAudio = GetComponent<AudioSource>();
         playerRb = GetComponent<Rigidbody>();
@@ -65,6 +63,7 @@ public class PlayerControllerX : MonoBehaviour
 
         }
 
+        // Set a small bounce when teh character lands on the ground.
         else if (other.gameObject.CompareTag("Ground") && !gameOver)
         {
             playerAudio.PlayOneShot(bounceSound, 1.0f);

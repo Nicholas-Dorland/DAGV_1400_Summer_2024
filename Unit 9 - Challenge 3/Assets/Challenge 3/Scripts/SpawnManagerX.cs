@@ -5,15 +5,15 @@ using UnityEngine;
 public class SpawnManagerX : MonoBehaviour
 {
     public GameObject[] objectPrefabs;
+
     private float spawnDelay = 2;
     private float spawnInterval = 1.5f;
-
     private PlayerControllerX playerControllerScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnObjects", spawnDelay, spawnInterval);
+        InvokeRepeating("SpawnObjects", spawnDelay, spawnInterval);     // Repeatedly spawn objects in the scene.
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerControllerX>();
     }
 

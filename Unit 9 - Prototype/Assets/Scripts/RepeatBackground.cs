@@ -11,12 +11,13 @@ public class RepeatBackground : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        repeatWidth = GetComponent<BoxCollider>().size.x / 2;
+        repeatWidth = GetComponent<BoxCollider>().size.x / 2;       // Cause the background to loop.
     }
 
     // Update is called once per frame
     void Update()
     {
+        // When the background reaches it's end, loop it.
         if (transform.position.x < startPos.x - repeatWidth)
         {
             transform.position = startPos;
