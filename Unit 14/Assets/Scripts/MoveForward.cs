@@ -7,11 +7,13 @@ public class MoveForward : MonoBehaviour
     public float speed = 40.0f;
 
     private ScoreManager scoreManager;
+    private GameManager gameManager;
 
 
     void Start()
     {
         scoreManager = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         string name = this.gameObject.name;
         switch (name)
@@ -41,6 +43,7 @@ public class MoveForward : MonoBehaviour
     {
         if (this.gameObject.CompareTag("Bullet") && other.gameObject.CompareTag("Enemy"))
         {
+            gameManager.PlayDestroy();
             scoreManager.GetPoints(other.gameObject.name);
             Destroy(other.gameObject);
             Destroy(gameObject);

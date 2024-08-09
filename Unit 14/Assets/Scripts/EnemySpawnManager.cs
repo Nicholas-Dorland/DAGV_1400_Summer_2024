@@ -11,7 +11,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("RandomSpawner", 2.0f, 0.5f);
+        InvokeRepeating("RandomSpawner", 2.0f, 1.0f);
     }
 
     void RandomSpawner()

@@ -27,9 +27,13 @@ public class DestroyObject : MonoBehaviour
         }
         else if (transform.position.z < bottomBound)
         {
-            gameManager.isGameOver = true;
-            scoreManager.LosePoints(this.gameObject.name);
-            Debug.Log("Game Over!");
+            if (this.gameObject.CompareTag("Enemy"))
+            {
+                gameManager.PlayEnd();
+                gameManager.isGameOver = true;
+                scoreManager.LosePoints(this.gameObject.name);
+                Debug.Log("Game Over!");
+            }
             Destroy(gameObject);
         }
     }
